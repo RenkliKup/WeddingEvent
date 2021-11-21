@@ -1,0 +1,13 @@
+.rezerve_btn {
+    display: block;
+    background-color: #5e9a8e;
+    color: #fff !important;
+    width: fit-content;
+    transition: 300ms all;
+    margin: 0 auto;
+}
+
+.rezerve_btn:hover { 
+    opacity: .8;
+    color: #fff;
+}
