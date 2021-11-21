@@ -1,0 +1,60 @@
+﻿@model DugunDaveti.Models.WeddingInvent
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>isInvent</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Invent</th>
+                <th scope="col">Thanks</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">@Model.name</th>
+                <td>@Model.surname</td>
+                <td>
+                    @if (Model.isAttend)
+                    {
+                        @Html.Label("Models", "Katılıyor")
+                    }
+                    else
+                    {
+                        @Html.Label("Models", "Katılmıyor")
+
+                    }
+                            </td>
+                <td>
+                    @if (Model.isAttend)
+                    {
+                        @Html.Label("Models", "Teşekkürler")
+                    }
+                    else
+                    {
+                        @Html.Label("Models", "see you again")
+
+                    }
+                            </td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
