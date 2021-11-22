@@ -9,10 +9,65 @@
             margin: 0 0 20px 0;
             text-align: center;
         }
+        &__filter {
+            display: flex;
+            flex-direction: column;
+            .btn {
+                margin-top: 20px;
+                border: 1px solid #fff;
+                outline: none;
+                &.selected {
+                    color: #fff;
+                }
+                &.all {
+                    border-color: #33aaff;
+                    &.selected {
+                        background-color: #33aaff;
+                    }
+                }
+                &.coming {
+                    border-color: #5e9a8e;
+                    &.selected {
+                        background-color: #5e9a8e;
+                    }
+                }
+                &.not_coming {
+                    border-color: #dc143c;
+                    &.selected {
+                        background-color: #dc143c;
+                    }
+                }
+
+            }
+        }
     }
     .r_content {
         width: 100%;
         padding: 20px;
+    }
+    ul.pagination {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    @media screen and (max-width: 1050px) {
+        flex-direction: column;
+        .r_content {
+            order: 1;
+        }
+        .sidebar {
+            order: 2;
+            width: 100%;
+            &__filter {
+                justify-content: center;
+                align-items: center;
+                .btn {
+                    width: 200px;
+                }
+            }
+        }    
     }
 }
 
@@ -32,6 +87,7 @@
         color: #fff;
         display: flex;
         flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         .item__header {
             display: flex;
             justify-content: space-between;
@@ -63,15 +119,15 @@
                 .res_result {
                     width: 55px;
                     height: 55px;
-                    margin-bottom: 10px;
                     border-radius: 50%;
                     display: grid;
                     place-items: center;
+                    color: #fff;
                     &.success {
                         background-color: #33aaff;
-                        &::after {
-                            content: "ss";
-                        }
+                    }
+                    &.error {
+                        background-color: #dc143c;
                     }
                 }
                 .count {
@@ -88,6 +144,11 @@
                 color: #fff;
                 font-size: 15px;
             }
+        }
+    }
+    @media screen and (max-width: 768px){
+        &__wrapper {
+            grid-template-columns: 1fr;
         }
     }
 }
