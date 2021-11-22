@@ -119,30 +119,35 @@
                         <p>Lütfen 20 mayıs 2022'den önce rezerve edin</p>
                         <form id="rsvp-form" class="form validate-rsvp-form row" method="post">
                             <div class="col col-sm-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name*">
+                                <input type="text" name="name" class="form-control" placeholder="Aile Adınız*">
                             </div>
                             <div class="col col-sm-6">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email*">
+                                <input type="email" name="email" class="form-control" placeholder="E-posta Adresiniz*">
                             </div>
-                            <div class="col col-sm-6">
-                                <select class="form-control" name="guest" >
-                                    <option disabled selected>Number Of Guest*</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                            <div class="col col-sm-12">
+                                <select class="form-control attending_select" name="attending">
+                                    <option disabled selected>Düğüne katılabilecek misiniz?</option>
+                                    <option value="yes">Evet</option>
+                                    <option value="no">Hayır</option>
                                 </select>
                             </div>
-                            <div class="col col-sm-6">
-                                <select class="form-control" name="events" >
-                                    <option disabled selected>I Am Attending*</option>
-                                    <option>Al events</option>
-                                    <option>Wedding ceremony</option>
-                                    <option>Reception party</option>
+                            <div class="col">
+                                <select class="form-control guest_select" name="guest" style="display: none;">
+                                    <option disabled selected>Kaç kişi katılacaksınız?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                 </select>
                             </div>
                             <div class="col col-sm-12">
-                                <textarea class="form-control" name="notes" placeholder="Your Message*"></textarea>
+                                <textarea class="form-control" name="notes" placeholder="Söylemek İstedikleriniz*"></textarea>
                             </div>
                             <div class="col col-sm-12 submit-btn">
                                 <button type="submit" class="submit">Rezerve Et</button>
@@ -168,7 +173,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
-                        <h2>Sonsuzza Kadar...</h2>
+                        <h2>Sonsuza Kadar...</h2>
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
@@ -192,5 +197,24 @@
     <script src="https://kit.fontawesome.com/3d21b8c562.js" crossorigin="anonymous"></script>
 
     <script src="js/script.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $(".attending_select").change(function(e) {
+                if ($(this).val() === "yes") {
+                    $(this).parent().removeClass("col-sm-12");
+                    $(this).parent().addClass("col-sm-6");
+                    $(".guest_select").css("display", "block");
+                    $(".guest_select").parent().addClass("col-sm-6");
+                } else {
+                    $(this).parent().removeClass("col-sm-6");
+                    $(this).parent().addClass("col-sm-12");
+                    $(".guest_select").css("display", "none");
+                    $(".guest_select").parent().removeClass("col-sm-6"); 
+                }
+            });
+        });
+    </script>
 </body>
 </html>
