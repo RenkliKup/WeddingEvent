@@ -1,14 +1,36 @@
-﻿@model List<DugunDaveti.Models.WeddingInvent>
+﻿@model ParticipantListViewModel
 @{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>@item.name,@item.surname,@item.isAttend</li>
+<section class="page_reservations">
 
-    }
-</ul>
+    <div class="sidebar">
+        <h3 class="sidebar__title">Filterele</h3>
 
-<p>Use this page to detail your site's privacy policy.</p>
+        <div class="sidebar__filter">
+            <vc:navigation-menu></vc:navigation-menu>
+        </div>
+    </div>
+    <div class="reservations">
+        <div class="reservations__wrapper">
+
+
+            @foreach (var item in Model.weddingInvents)
+            {
+
+                <partial name="ParticipantSummary" model="item" />
+            }
+
+
+        </div>
+        <div page-model="@Model.PageingInfo" page-action="Privacy" page-classes-enabled="true"
+             page-class="btn" page-class-normal="btn-outline-dark"
+             page-class-selected="btn-primary" page-url-isAttend="@Model.currentCategory" class="btn-group pull-left ml-5 ">
+        </div>
+    </div>
+   
+</section>
+
+
+

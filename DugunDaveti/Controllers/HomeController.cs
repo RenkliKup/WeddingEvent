@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using DugunDaveti.Models.ViewModels;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,10 +12,9 @@ namespace DugunDaveti.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         Repository new1 = new Repository();
         IWeddingRepository db;
-        
+        public int pageSize = 4;
        
         
         public HomeController(IWeddingRepository _db)
@@ -37,15 +37,23 @@ namespace DugunDaveti.Controllers
                 
                 return View("isInvent",invent);
             }
-
+            
             return View();
             
         }
 
-        public IActionResult Privacy()
+        public IActionResult Privacy(string isAttend,int participantPage = 1)
         {
-          
-            return View("Privacy",db.weddingInvents.ToList());
+            
+            return View("Privacy",new ParticipantListViewModel{weddingInvents=db.weddingInvents.OrderBy(x=>x.TelNo).
+                Where(x=>isAttend==null   || x.isAttend==Boolean.Parse(isAttend)).
+                
+                Skip((participantPage - 1) * pageSize).Take(pageSize).AsEnumerable(),
+                PageingInfo=new PageingInfo {CurrentPage=participantPage,
+                    participantperPage=pageSize,totalParticipant=db.weddingInvents.Count()},
+                currentCategory = isAttend
+
+            });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

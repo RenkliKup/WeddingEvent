@@ -1,0 +1,25 @@
+﻿@model IEnumerable<bool>
+@{
+    Layout = null;
+}
+
+<a class="btn btn-block btn-outline-secondary" 
+   asp-action="Privacy" 
+   asp-controller="Home" 
+   asp-route-isAttend=""> Hepsi</a>
+
+@foreach (bool item in Model)
+{
+<a class="btn btn-block btn-outline-secondary" asp-action="Privacy" asp-controller="Home"
+   asp-route-isAttend="@item"
+   asp-route-participantPage="1">
+    @if (item)
+    {
+        @Html.Label("Models", "Gelenler")
+    }
+    else
+    {
+        @Html.Label("Models", "Gelmeyenler")
+    }
+</a>
+}

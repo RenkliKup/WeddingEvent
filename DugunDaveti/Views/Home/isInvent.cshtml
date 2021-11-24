@@ -1,60 +1,80 @@
 ﻿@model DugunDaveti.Models.WeddingInvent
 @{
-    Layout = null;
+
 }
+<!-- start page-wrapper -->
+<div class="page-wrapper">
 
-<!DOCTYPE html>
+    <!-- start preloader -->
+    
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>isInvent</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-</head>
-<body>
-    <table class="table">
-        <thead>
-            <tr>
-                
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Invent</th>
-                <th scope="col">Thanks</th>
+    <!-- end preloader -->
+    
+    <section class="rsvp-section section-padding parallax" data-bg-image="images/rsvp-bg.jpeg" data-speed="7" id="rsvp">
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="section-title-white">
+                        <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+                        <h2>Düğünümüze Katıl</h2>
+                    </div>
+                </div>
+            </div> <!-- end section-title -->
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">@Model.name</th>
-                <td>@Model.surname</td>
-                <td>
-                    @if (Model.isAttend)
-                    {
-                        @Html.Label("Models", "Katılıyor")
-                    }
-                    else
-                    {
-                        @Html.Label("Models", "Katılmıyor")
+            <div class="row content">
+                <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>Lütfen 20 mayıs 2022'den önce rezerve edin</p>
+                    <form id="rsvp-form" class="form validate-rsvp-form row" method="post">
+                        <div class="col col-sm-6">
+                            <input asp-for="name" name="name" class="form-control" placeholder="Adınız*">
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+                        <div class="col col-sm-6">
+                            <input asp-for="surname" class="form-control" placeholder="Aile Adınız*">
+                            <span asp-validation-for="surname" class="text-danger"></span>
+                        </div>
+                        <div class="col col-sm-6">
+                            <input asp-for="Mail" name="email" class="form-control" placeholder="E-posta Adresiniz*">
+                            <span asp-validation-for="Mail" class="text-danger"></span>
+                        </div>
+                        <div class="col col-sm-6">
+                            <input asp-for="TelNo" class="form-control" placeholder="Tel*">
+                            <span asp-validation-for="TelNo" class="text-danger"></span>
+                        </div>
+                        <div class="col col-sm-12">
+                            <select asp-for="isAttend" class="form-control attending_select" name="attending">
+                                <option disabled selected>Düğüne katılabilecek misiniz?</option>
+                                <option value="true">Evet</option>
+                                <option value="false">Hayır</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control guest_select" name="guest" style="display: none;">
+                                <option disabled selected>Kaç kişi katılacaksınız?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
 
-                    }
-                            </td>
-                <td>
-                    @if (Model.isAttend)
-                    {
-                        @Html.Label("Models", "Teşekkürler")
-                    }
-                    else
-                    {
-                        @Html.Label("Models", "see you again")
-
-                    }
-                            </td>
-            </tr>
-           
-        </tbody>
-    </table>
-
-
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-</body>
-</html>
+                        <div class="col col-sm-12 submit-btn">
+                            <button type="submit" class="submit">Rezerve Et</button>
+                            <span id="loader"><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></span>
+                        </div>
+                        <div class="col col-md-12 success-error-message">
+                            <div id="success">Listeye eklendiniz. Bu güzel günümüzde bizi yalnız bırakmadığınız için teşekkür ederiz.</div>
+                            <div id="error"> Bir hata meydana geldi. Lütfen daha sonra tekrar deneyin. </div>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+    </section>
+    <!-- end rsvp-section -->
