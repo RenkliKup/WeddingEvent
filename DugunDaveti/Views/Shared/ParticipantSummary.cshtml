@@ -35,8 +35,9 @@
                 <span>@Model.TelNo</span>
             </div>
         </div>
-        @if (Model.isAttend)
+        @if (Model.isAttend==true)
         {
+           
             <div class="item__header--right">
                 <div class="res_result success">
                     <i class="fa fa-check"></i>
@@ -58,13 +59,13 @@
 
     <div class="item__footer">
         <p>
-            @if (Model.isAttend)
+            @if (Model.isAttend==tr)
             {
                 @Html.Label("Models", "Bu güzel günde sizleri tabiki yalnız bırakmayacağız.")
             }
             else
             {
-                @Html.Label("Models", "Bu güzel günde sizleri tabiki yalnız bırakmayacağız.")
+                @Html.Label("Models", "ikinciye artık")
             }
         </p>
 
