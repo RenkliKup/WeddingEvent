@@ -54,17 +54,17 @@ namespace DugunDaveti
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute("catpage",
                     "{isAttend}/Page{participantPage:int}",
-                    new { Controller = "Home", action = "Privacy" });
+                    new { Controller = "Home", action = "ParticipantList" });
 
                 endpoints.MapControllerRoute("page", "Page{participantPage:int}",
-                    new { Controller = "Home", action = "Privacy", participantPage = 1 });
+                    new { Controller = "Home", action = "ParticipantList", participantPage = 1 });
 
                 endpoints.MapControllerRoute("isAttend", "{isAttend}",
-                    new { Controller = "Home", action = "Privacy", participantPage = 1 });
+                    new { Controller = "Home", action = "ParticipantList", participantPage = 1 });
 
                 endpoints.MapControllerRoute("pagination",
                     "weddingInvents/Page{participantPage}",
-                    new { Controller = "Home", action = "Privacy", participantPage = 1 });
+                    new { Controller = "Home", action = "ParticipantList", participantPage = 1 });
                 endpoints.MapDefaultControllerRoute();
                 
             });

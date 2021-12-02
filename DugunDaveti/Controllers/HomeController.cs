@@ -29,25 +29,24 @@ namespace DugunDaveti.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult isInvent(WeddingInvent invent)
+        public IActionResult ParticipantRequest(WeddingInvent invent)
         {
             if(ModelState.IsValid)
             {
                 db.saveInvents(invent);
-                return View("isInvent", invent);
+                return View("ParticipantRequest", invent);
             }
-                return View("isInvent");
-            //return View("isInvent",invent);
+                return View("ParticipantRequest");
+            //return View("ParticipantRequest",invent);
 
 
 
 
         }
-
-        public IActionResult Privacy(string isAttend,int participantPage = 1)
+        public IActionResult ParticipantList(string isAttend,int participantPage = 1)
         {
             
-            return View("Privacy",new ParticipantListViewModel{weddingInvents=db.weddingInvents.OrderBy(x=>x.TelNo).
+            return View("ParticipantList",new ParticipantListViewModel{weddingInvents=db.weddingInvents.OrderBy(x=>x.TelNo).
                 Where(x=>isAttend==null   || x.isAttend==Boolean.Parse(isAttend)).
                 
                 Skip((participantPage - 1) * pageSize).Take(pageSize).AsEnumerable(),
@@ -74,7 +73,7 @@ namespace DugunDaveti.Controllers
         {
             return View();
         }
-        public IActionResult isInvent()
+        public IActionResult ParticipantRequest()
         {
             
             

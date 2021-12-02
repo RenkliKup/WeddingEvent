@@ -117,8 +117,8 @@
                         <button class="close-navbar"><i class="fa fa-close"></i></button>
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Ana Sayfa", "Index", "Home",  null)</li>
-                            <li>@Html.ActionLink("Rezerve Et", "isInvent", "Home", null)</li>
-                            <li>@Html.ActionLink("Rezervasyonlar", "Privacy", "Home", null)</li>
+                            <li>@Html.ActionLink("Rezerve Et", "ParticipantRequest", "Home", null)</li>
+                            <li>@Html.ActionLink("Rezervasyonlar", "ParticipantList", "Home", null)</li>
                             
                         </ul>
                     </div><!-- end of nav-collapse -->
@@ -208,7 +208,7 @@
 
                 <div class="row content">
                     <ul>
-                        <li>@Html.ActionLink("Rezerve Et", "isInvent", "Home", null, new { @class = "btn rezerve_btn" })</li>
+                        <li>@Html.ActionLink("Rezerve Et", "ParticipantRequest", "Home", null, new { @class = "btn rezerve_btn" })</li>
                     </ul>
                     
                 </div>
