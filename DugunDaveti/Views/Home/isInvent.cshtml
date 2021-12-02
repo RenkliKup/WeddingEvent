@@ -10,7 +10,7 @@
 
     <!-- end preloader -->
     
-    <section class="rsvp-section section-padding parallax" data-bg-image="images/rsvp-bg.jpeg" data-speed="7" id="rsvp">
+    <section class="rsvp-section section-padding parallax" data-bg-image="~images/rsvp-bg.jpeg" data-speed="7" id="rsvp">
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
@@ -20,10 +20,34 @@
                     </div>
                 </div>
             </div> <!-- end section-title -->
-
+            
             <div class="row content">
                 <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p>Lütfen 20 mayıs 2022'den önce rezerve edin</p>
+
+
+                    @if (Model != null)
+                    {
+                        @if (Model.isAttend == true)
+                        {
+                            @Html.Raw("<p>Katıldığınız için teşekkürler :D</p>");
+
+
+                        }
+                        else
+                        {
+
+                            @Html.Raw("<p>ikinciye artık :D</p>");
+
+                        }
+
+                    }
+                    else
+                    {
+                        @Html.Raw("<p>Lütfen 20 mayıs 2022'den önce rezerve edin</p>");
+
+                    }
+
+
                     <form id="rsvp-form" class="form validate-rsvp-form row" method="post">
                         <div class="col col-sm-6">
                             <input asp-for="name" name="name" class="form-control" placeholder="Adınız*">
@@ -34,7 +58,7 @@
                             <span asp-validation-for="surname" class="text-danger"></span>
                         </div>
                         <div class="col col-sm-6">
-                            <input asp-for="Mail" name="email" class="form-control" placeholder="E-posta Adresiniz*">
+                            <input asp-for="Mail" name="Mail" class="form-control" placeholder="E-posta Adresiniz*">
                             <span asp-validation-for="Mail" class="text-danger"></span>
                         </div>
                         <div class="col col-sm-6">
@@ -42,27 +66,13 @@
                             <span asp-validation-for="TelNo" class="text-danger"></span>
                         </div>
                         <div class="col col-sm-12">
-                            <select asp-for="isAttend" class="form-control attending_select" name="attending">
+                            <select asp-for="isAttend" class="form-control attending_select" name="isAttend">
                                 <option disabled selected>Düğüne katılabilecek misiniz?</option>
-                                <option value="true">Evet</option>
-                                <option value="false">Hayır</option>
+                                <option value="true" asp-for="isAttend" name="isAttend">Evet</option>
+                                <option value="false" asp-for="isAttend" name="isAttend">Hayır</option>
                             </select>
                         </div>
-                        <div class="col">
-                            <select class="form-control guest_select" name="guest" style="display: none;">
-                                <option disabled selected>Kaç kişi katılacaksınız?</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
+
 
                         <div class="col col-sm-12 submit-btn">
                             <button type="submit" class="submit">Rezerve Et</button>

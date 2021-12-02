@@ -1,6 +1,6 @@
 ﻿@model ParticipantListViewModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    
 }
 <h1>@ViewData["Title"]</h1>
 <section class="page_reservations">
@@ -12,21 +12,23 @@
             <vc:navigation-menu></vc:navigation-menu>
         </div>
     </div>
-    <div class="reservations">
-        <div class="reservations__wrapper">
+    <div class="r_content">
+        <div class="reservations">
+            <div class="reservations__wrapper">
 
 
-            @foreach (var item in Model.weddingInvents)
-            {
+                @foreach (var item in Model.weddingInvents)
+                {
 
-                <partial name="ParticipantSummary" model="item" />
-            }
+                    <partial name="ParticipantSummary" model="item" />
+                }
 
 
-        </div>
-        <div page-model="@Model.PageingInfo" page-action="Privacy" page-classes-enabled="true"
-             page-class="btn" page-class-normal="btn-outline-dark"
-             page-class-selected="btn-primary" page-url-isAttend="@Model.currentCategory" class="btn-group pull-left ml-5 ">
+            </div>
+            <div page-model="@Model.PageingInfo" page-action="Privacy" page-classes-enabled="true"
+                 page-class="btn" page-class-normal="btn-outline-dark"
+                 page-class-selected="btn-primary" page-url-isAttend="@Model.currentCategory" class="btn-group pull-left ml-5 ">
+            </div>
         </div>
     </div>
    

@@ -1,8 +1,14 @@
 ﻿@*
+
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
 *@
 
+
 @model WeddingInvent
+@{
+    string se = "https://avatars.dicebear.com/api/miniavs/-"+@Model.surname.ToString()+".svg";
+}
 
 <link href="~/css/animate.css" rel="stylesheet">
 <link href="~/css/owl.carousel.css" rel="stylesheet">
@@ -28,21 +34,21 @@
 <div class="reservations__item">
     <div class="item__header ">
         <div class="item__header--left">
-            <img src="https://avatars.dicebear.com/api/miniavs/aakdqkq.svg">
+            <img src="@se">
             <div class="left_text">
                 <h4>@Model.surname Ailesi</h4>
                 <span>@Model.Mail</span>
                 <span>@Model.TelNo</span>
             </div>
         </div>
-        @if (Model.isAttend==true)
+        @if (Model.isAttend == true)
         {
-           
+
             <div class="item__header--right">
                 <div class="res_result success">
                     <i class="fa fa-check"></i>
                 </div>
-                <span class="count">5 <span class="small">kişi geliyor</span></span>
+                <span class="count"><span class="small">geliyor</span></span>
             </div>
         }
         else
@@ -59,7 +65,7 @@
 
     <div class="item__footer">
         <p>
-            @if (Model.isAttend==true)
+            @if (Model.isAttend == true)
             {
                 @Html.Label("Models", "Bu güzel günde sizleri tabiki yalnız bırakmayacağız.")
             }

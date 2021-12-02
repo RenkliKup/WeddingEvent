@@ -3,19 +3,22 @@
     Layout = null;
 }
 
-<a class="btn btn-block btn-outline-secondary" 
-   asp-action="Privacy" 
-   asp-controller="Home" 
-   asp-route-isAttend=""> Hepsi</a>
+<a class="btn btn-block btn-outline-secondary all  @(ViewBag.SelectedCategory ==  "hepsi" ? "selected" : "")"
+   asp-action="Privacy"
+   asp-controller="Home"
+   asp-route-isAttend=""> Hepsi </a>
+
 
 @foreach (bool item in Model)
 {
-<a class="btn btn-block btn-outline-secondary" asp-action="Privacy" asp-controller="Home"
+<a class="btn btn-block btn-outline-secondary @(item ? "coming" : "not_coming") @(ViewBag.SelectedCategory == item.ToString() ? "selected" : "")  " asp-action="Privacy" asp-controller="Home"
    asp-route-isAttend="@item"
    asp-route-participantPage="1">
+
     @if (item)
     {
-        @Html.Label("Models", "Gelenler")
+        @Html.Label("Models", "Gelenler");
+        
     }
     else
     {

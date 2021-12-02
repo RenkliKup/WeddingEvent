@@ -15,6 +15,14 @@ namespace DugunDaveti.Components
         }
         public IViewComponentResult Invoke()
         {
+            
+            object selected_cat = RouteData?.Values["isAttend"];
+            if (selected_cat != null) {
+                ViewBag.SelectedCategory = selected_cat.ToString();
+            } else
+            {
+                ViewBag.SelectedCategory =  "hepsi";
+            }
             return View(repository.weddingInvents.Select(x => x.isAttend).Distinct().OrderBy(x => x));
         }
     }

@@ -29,16 +29,15 @@ namespace DugunDaveti.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(WeddingInvent invent)
+        public IActionResult isInvent(WeddingInvent invent)
         {
-            if(ModelState.IsValid)
-            {
-                db.saveInvents(invent);
-                
-                return View("isInvent",invent);
-            }
             
-            return View();
+                db.saveInvents(invent);
+                return View("isInvent", invent);
+                //return View("isInvent",invent);
+            
+            
+            
             
         }
 
@@ -49,9 +48,15 @@ namespace DugunDaveti.Controllers
                 Where(x=>isAttend==null   || x.isAttend==Boolean.Parse(isAttend)).
                 
                 Skip((participantPage - 1) * pageSize).Take(pageSize).AsEnumerable(),
-                PageingInfo=new PageingInfo {CurrentPage=participantPage,
-                    participantperPage=pageSize,totalParticipant=db.weddingInvents.Count()},
-                currentCategory = isAttend
+                PageingInfo = new PageingInfo {
+                    CurrentPage=participantPage,
+                    participantperPage=pageSize,
+                    totalParticipant= isAttend == null ?
+                    db.weddingInvents.Count() :
+                    db.weddingInvents.Where(e => 
+                        e.isAttend == bool.Parse(isAttend)).Count()
+                },
+                 currentCategory = isAttend
 
             });
         }
@@ -68,6 +73,8 @@ namespace DugunDaveti.Controllers
         }
         public IActionResult isInvent()
         {
+            
+            
             return View();
         }
 
