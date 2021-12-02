@@ -65,14 +65,7 @@
 
     <div class="item__footer">
         <p>
-            @if (Model.isAttend == true)
-            {
-                @Html.Label("Models", "Bu güzel günde sizleri tabiki yalnız bırakmayacağız.")
-            }
-            else
-            {
-                @Html.Label("Models", "ikinciye artık")
-            }
+           @Model.message
         </p>
 
     </div>

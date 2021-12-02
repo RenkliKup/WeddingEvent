@@ -3,14 +3,16 @@ using DugunDaveti.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DugunDaveti.Migrations
 {
     [DbContext(typeof(WeddingInventDbContext))]
-    partial class WeddingInventDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211202110834_dene2")]
+    partial class dene2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -10,7 +10,7 @@
 
     <!-- end preloader -->
     
-    <section class="rsvp-section section-padding parallax" data-bg-image="~images/rsvp-bg.jpeg" data-speed="7" id="rsvp">
+    <section class="rsvp-section section-padding parallax" style="background-image: url(/images/rsvp-bg.jpeg)" data-speed="7" id="rsvp">
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
@@ -21,7 +21,7 @@
                 </div>
             </div> <!-- end section-title -->
             
-            <div class="row content">
+            <div class="row content event_form">
                 <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
 
@@ -71,6 +71,10 @@
                                 <option value="true" asp-for="isAttend" name="isAttend">Evet</option>
                                 <option value="false" asp-for="isAttend" name="isAttend">Hayır</option>
                             </select>
+                        </div>
+                        <div class="col col-sm-12">
+                            <textarea asp-for="message" name="message" placeholder="Lütfenmesaj belirtiniz" class="form-control"></textarea>
+                            <span asp-validation-for="message" class="text-danger"></span>
                         </div>
 
 

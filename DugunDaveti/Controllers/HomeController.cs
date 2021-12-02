@@ -31,14 +31,17 @@ namespace DugunDaveti.Controllers
         [HttpPost]
         public IActionResult isInvent(WeddingInvent invent)
         {
-            
+            if(ModelState.IsValid)
+            {
                 db.saveInvents(invent);
                 return View("isInvent", invent);
-                //return View("isInvent",invent);
-            
-            
-            
-            
+            }
+                return View("isInvent");
+            //return View("isInvent",invent);
+
+
+
+
         }
 
         public IActionResult Privacy(string isAttend,int participantPage = 1)

@@ -233,3 +233,13 @@
         grid-template-columns: 1fr;
     }
 }
+
+.event_form textarea{
+    resize: vertical;
+    width: 100%;
+}
+
+.res_pagination {
+    display: flex;
+    justify-content: center;
+}
